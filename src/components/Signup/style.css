@@ -1,9 +1,7 @@
-.form {
-    background-image: url(https://demo44.atiframe.com/wp-content/uploads/2020/11/Image_bak.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 45px 0;
-  }
+.form{
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
   .container{
     box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
   }

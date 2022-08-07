@@ -16,10 +16,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Key from "@mui/icons-material/Key";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import SchoolIcon from "@mui/icons-material/School";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
-import LocationCityIcon from "@mui/icons-material/LocationCity";
-import PublicIcon from "@mui/icons-material/Public";
-import FmdGoodIcon from "@mui/icons-material/FmdGood";
+
 
 const CssTextField = styled(TextField)({
   "& label": {
@@ -32,7 +29,7 @@ const CssTextField = styled(TextField)({
 
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
-      borderColor: "#ffffff", //Fieldset
+      borderColor: "#000000", //Fieldset
     },
     "&:hover fieldset": {
       borderColor: "#fb9701", //Fieldset on hover
@@ -78,10 +75,10 @@ const Signup = () => {
           gap: 3,
         }}
       >
-        <Typography variant="h5" style={{ color: "#ffffff" }}>
+        <Typography variant="h3" >
           <b>Don't have an account?</b>
         </Typography>
-        <Typography variant="h5" style={{ color: "#ffffff", marginBottom: 20 }}>
+        <Typography variant="h5" style={{  marginBottom: 20 }}>
           Sign up with us!
         </Typography>
 
@@ -141,34 +138,6 @@ const Signup = () => {
           placeholder="College Name"
           iconStart={<SchoolIcon sx={{ color: "#fa2185" }} />}
         />
-        <IconTextField
-          sx={{ color: "white" }}
-          label="Year of Graduation"
-          type="month"
-          //   defaultValue= ""
-          iconStart={<CalendarTodayIcon sx={{ color: "#fa2185" }} />}
-        />
-        <IconTextField
-          sx={{ color: "white" }}
-          label="City"
-          type="text"
-          placeholder="City"
-          iconStart={<LocationCityIcon sx={{ color: "#fa2185" }} />}
-        />
-        <IconTextField
-          sx={{ color: "white" }}
-          label="State"
-          type="text"
-          placeholder="State"
-          iconStart={<PublicIcon sx={{ color: "#fa2185" }} />}
-        />
-        <IconTextField
-          sx={{ color: "white" }}
-          label="Pincode"
-          type="text"
-          placeholder="Pincode"
-          iconStart={<FmdGoodIcon sx={{ color: "#fa2185" }} />}
-        />
 
         <div className="panel pink">
           <button className="btn2">Signup</button>
@@ -190,7 +159,7 @@ const IconTextField = ({ iconStart, iconEnd, InputProps, ...props }) => {
       InputProps={{
         ...InputProps,
         style: {
-          color: "#ffffff",
+          color: "#000000",
         },
         startAdornment: iconStart ? (
           <InputAdornment position="start">{iconStart}</InputAdornment>

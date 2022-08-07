@@ -25,7 +25,7 @@ const CssTextField = styled(TextField)({
 
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
-      borderColor: "#ffffff", //Fieldset
+      borderColor: "#000000", //Fieldset
     },
     "&:hover fieldset": {
       borderColor: "#fb9701", //Fieldset on hover
@@ -71,10 +71,10 @@ const Login = () => {
           gap: 2,
         }}
       >
-        <Typography variant="h3" style={{ color: "#ffffff" }}>
+        <Typography variant="h3" >
           <b>Welcome!</b>
         </Typography>
-        <Typography variant="h5" style={{ color: "#ffffff", marginBottom: 20 }}>
+        <Typography variant="h5" style={{ marginBottom: 20 }}>
           Sign in to continue.
         </Typography>
 
@@ -131,7 +131,7 @@ const IconTextField = ({ iconStart, iconEnd, InputProps, ...props }) => {
       InputProps={{
         ...InputProps,
         style: {
-          color: "#ffffff",
+          color: "#000000",
         },
         startAdornment: iconStart ? (
           <InputAdornment position="start">{iconStart}</InputAdornment>
