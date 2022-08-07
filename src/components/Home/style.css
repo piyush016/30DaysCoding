@@ -1,0 +1,20 @@
+.img {
+  width: 100vw;
+  height: 85vh;
+  z-index: -999;
+}
+ .login {
+  font-size: 2em;
+  z-index: 10;
+  position: fixed;
+  top: 50%;
+  left: 20%;
+}
+.signup {
+  font-size: 2em;
+  z-index: 10;
+  position: absolute;
+  top: 50%;
+  right: 5%;
+} 
+
