@@ -107,7 +107,7 @@ const Login = () => {
             </IconButton>
           }
         />
-        <Typography variant="body2" style={{ color: "#ffffff" }}>
+        <Typography variant="body2" style={{ color: "#fb9701", fontWeight: "bold"}}>
           Forgot Password?
         </Typography>
 
