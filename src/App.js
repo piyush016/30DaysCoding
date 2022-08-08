@@ -8,8 +8,8 @@ import Footer from "./components/Footer/Footer";
 import Login from "./components/Login/Login.jsx";
 import Signup from "./components/Signup/Signup.jsx";
 import Topic from "./components/Topic/Topic";
-import Table from "./components/Table/Table"
-
+import Contact from "./components/Contact/Contact";
+import Table from "./components/Table/Table";
 
 function App() {
   return (
@@ -21,10 +21,11 @@ function App() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/topic" element={<Topic />} />
+        <Route exact path="/contact" element={<Contact />} />
 
-        <Route path="/questions/:url" element={<Table/>} />
+        <Route path="/questions/:url" element={<Table />} />
       </Routes>
-     
+
       <Footer />
     </Router>
   );
