@@ -1,36 +1,71 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./style.css";
+import { AiTwotoneHome } from "react-icons/ai";
+import { FaUserAstronaut } from "react-icons/fa";
+import { TbMessages } from "react-icons/tb";
+import { MdTopic } from "react-icons/md";
+import { BsFillInfoCircleFill } from "react-icons/bs";
 
 export default function Footer() {
-  return (
-    <>
-      <footer className="footer">
-        <div className="project">
-          <h2>
-            <a
-              href="https://github.com/piyush016"
-              target="_blank"
-              without
-              rel="noreferrer"
-            >
-              {/* <Chip label="⭐ This Project" color="secondary" /> */}
-            </a>
-          </h2>
-        </div>
-        
-        <div>
-              <h3 className="name">P.I.Y.U.S.H</h3>
-        </div>
+  const [click, setClick] = React.useState(false);
+  const handleClick = () => setClick(!click);
 
-        <div className="about">
-          <h2>
-            <Link to="/about">
-              {/* <Chip label="🧐 About" color="error"/> */}
-            </Link>
-          </h2>
-        </div>
-      </footer>
-    </>
+  return (
+    <div>
+      <div className="nav-container">
+        <ul className="nav-menu">
+          <li className="nav-item">
+            <NavLink
+              to="/contact"
+              className={click ? "nav-items active" : "nav-items"}
+              onClick={click ? handleClick : null}
+            >
+              {TbMessages}
+            </NavLink>
+          </li>
+
+          <li className="nav-item">
+            <NavLink
+              to="/topic"
+              className={click ? "nav-items active" : "nav-items"}
+              onClick={click ? handleClick : null}
+            >
+              {MdTopic}
+            </NavLink>
+          </li>
+
+          <li className="nav-item">
+            <NavLink
+              to="/"
+              className={click ? "nav-items active" : "nav-items"}
+              onClick={click ? handleClick : null}
+            >
+              {AiTwotoneHome}
+            </NavLink>
+          </li>
+
+          <li className="nav-item">
+            <NavLink
+              to="/login"
+              className={click ? "nav-items active" : "nav-items"}
+              onClick={click ? handleClick : null}
+            >
+              {FaUserAstronaut}
+            </NavLink>
+          </li>
+
+          <li className="nav-item">
+            <NavLink
+              to="/about"
+              className={click ? "nav-items active" : "nav-items"}
+              onClick={click ? handleClick : null}
+            >
+              {BsFillInfoCircleFill}
+            </NavLink>
+          </li>
+        </ul>
+      </div>
+    </div>
   );
 }
