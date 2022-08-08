@@ -21,7 +21,7 @@ export default function Footer() {
               className={click ? "nav-items active" : "nav-items"}
               onClick={click ? handleClick : null}
             >
-              {TbMessages}
+              <TbMessages/>
             </NavLink>
           </li>
 
@@ -31,7 +31,7 @@ export default function Footer() {
               className={click ? "nav-items active" : "nav-items"}
               onClick={click ? handleClick : null}
             >
-              {MdTopic}
+              <MdTopic/>
             </NavLink>
           </li>
 
@@ -41,7 +41,7 @@ export default function Footer() {
               className={click ? "nav-items active" : "nav-items"}
               onClick={click ? handleClick : null}
             >
-              {AiTwotoneHome}
+              <AiTwotoneHome/>
             </NavLink>
           </li>
 
@@ -51,7 +51,7 @@ export default function Footer() {
               className={click ? "nav-items active" : "nav-items"}
               onClick={click ? handleClick : null}
             >
-              {FaUserAstronaut}
+              <FaUserAstronaut/>
             </NavLink>
           </li>
 
@@ -61,7 +61,7 @@ export default function Footer() {
               className={click ? "nav-items active" : "nav-items"}
               onClick={click ? handleClick : null}
             >
-              {BsFillInfoCircleFill}
+              <BsFillInfoCircleFill/>
             </NavLink>
           </li>
         </ul>
