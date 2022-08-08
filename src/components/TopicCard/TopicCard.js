@@ -13,18 +13,19 @@ export default function TopicCard(props) {
 
           <p>{props.text}</p>
 
-          <div className="button">
-            <a href={props.link} target="_blank" rel="noreferrer">
-              <div className="pink">
+          <div className="button-cont">
+            <div className="panel blue">
+              <a href={props.link} target="_blank" rel="noreferrer">
                 <button>Learn More?</button>
-              </div>
-            </a>
-            <a href={props.url}>
-              <div className="blue">
+              </a>
+            </div>
+            <div className="panel pink">
+              <a href={props.url}>
                 <button>Solve Questions?</button>
-              </div>
-            </a>
+              </a>
+            </div>
           </div>
+          
         </div>
       </div>
     </div>

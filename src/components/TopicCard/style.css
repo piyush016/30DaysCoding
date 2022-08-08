@@ -27,14 +27,15 @@
 }
 .testimotionals .card .content h2 {
   text-align: center;
-  font-family: 'Ribeye Marrow', cursive;}
+  font-family: "Ribeye Marrow", cursive;
+}
 .testimotionals .card .content p {
   font-size: 1.2em;
   font-weight: 600;
   line-height: 24px;
   letter-spacing: 0.075em;
   color: grey;
-  font-family: 'Indie Flower', cursive;
+  font-family: "Indie Flower", cursive;
 }
 
 .testimotionals .card:hover .layer {
@@ -44,9 +45,12 @@
   color: white;
 }
 .testimotionals .card:hover p {
-  color: #FFF10A;
+  color: #fff10a;
 }
-
+.button-cont{
+ display: flex;
+ flex-direction: row;
+}
 /* Buttons */
 
 button {
@@ -54,14 +58,16 @@ button {
   border-width: 2px;
   border-style: solid;
   position: relative;
-  margin: 0.5em 0em;
+  /* margin: 0.5em 0em; */
   display: inline-block;
   padding: 0.4em 0.3em;
   transition: all 0.3s ease-in-out;
   text-align: center;
 }
-button:before,
-button:after {
+.pink button:before,
+.pink button:after,
+.blue button:before,
+.blue button:after {
   content: "";
   display: block;
   position: absolute;
@@ -72,25 +78,29 @@ button:after {
   height: 1em;
   transition: all 0.3s ease-in-out;
 }
-button:before {
+.pink button:before,
+.blue button:before {
   top: -6px;
   left: -6px;
   border-width: 2px 0 0 2px;
   z-index: 5;
 }
-button:after {
+.pink button:after,
+.blue button:after {
   bottom: -6px;
   right: -6px;
   border-width: 0 2px 2px 0;
 }
-button:hover:before,
-button:hover:after {
+.pink button:hover:before,
+.pink button:hover:after,
+.blue button:hover:before,
+.blue button:hover:after {
   width: calc(100% + 12px);
   height: calc(100% + 12px);
   border-color: #fff;
 }
 
-.pink button {
+.pink {
   color: #eb1777;
   border-color: #eb1777;
 }
@@ -108,7 +118,6 @@ button:hover:after {
   border-color: #eb1777;
 }
 
-
 .blue button {
   color: #3bb4e5;
   border-color: #3bb4e5;
@@ -124,12 +133,8 @@ button:hover:after {
   border-color: #3bb4e5;
   transform: rotateY(180deg);
 }
-.blue button:hover {
+.blue :hover {
   color: #3bb4e5;
   background-color: transparent;
   border-color: #3bb4e5;
-}
-.button{
-  display: flex;
-  justify-content: space-evenly;
 }

@@ -7,8 +7,7 @@ const Table_view = () => {
   var temp = dsatopic.filter(function (item) {
     return item.topic === "Arrays-I";
   });
-  console.log(temp);
-
+  
   const ques = temp.map((item) => {
     return (
       <RowQues key={item.id} id={item.id} ques={item.problem} url={item.URL} />
