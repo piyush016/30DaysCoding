@@ -14,7 +14,7 @@ export default function TopicCard(props) {
           <p>{props.text}</p>
 
           <div className="button">
-            <a href={props.link} _target="blank">
+            <a href={props.link} target="_blank" rel="noreferrer">
               <div className="pink">
                 <button>Learn More?</button>
               </div>
