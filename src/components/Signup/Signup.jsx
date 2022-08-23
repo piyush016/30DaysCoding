@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./style.css";
-import { Link } from "react-router-dom";
 //For Form
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -16,7 +16,6 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Key from "@mui/icons-material/Key";
 import PhoneIphoneIcon from "@mui/icons-material/PhoneIphone";
 import SchoolIcon from "@mui/icons-material/School";
-
 
 const CssTextField = styled(TextField)({
   "& label": {
@@ -41,11 +40,18 @@ const CssTextField = styled(TextField)({
 });
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [values, setValues] = React.useState({
     email: "",
     password: "",
     showPassword: false,
   });
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [college, setCollege] = useState("");
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
@@ -61,8 +67,36 @@ const Signup = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+  async function registerUser(event) {
+    event.preventDefault();
+    const response = await fetch("http://localhost:1337/api/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+        phone,
+        college,
+      }),
+    });
+    const data = await response.json();
+
+    if (data.status === "ok") {
+      navigate("/login");
+    }
+  }
+
   return (
-    <form autoComplete="off" noValidate className="form">
+    <form
+      autoComplete="off"
+      noValidate
+      className="form"
+      onSubmit={registerUser}
+    >
       <Box
         className="container"
         sx={{
@@ -75,10 +109,10 @@ const Signup = () => {
           gap: 3,
         }}
       >
-        <Typography variant="h3" >
+        <Typography variant="h3">
           <b>Don't have an account?</b>
         </Typography>
-        <Typography variant="h5" style={{  marginBottom: 20 }}>
+        <Typography variant="h5" style={{ marginBottom: 20 }}>
           Sign up with us!
         </Typography>
 
@@ -87,6 +121,8 @@ const Signup = () => {
           sx={{ color: "white" }}
           label="Name"
           type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           placeholder="Name"
           iconStart={<PersonIcon sx={{ color: "#fa2185" }} />}
         />
@@ -94,13 +130,23 @@ const Signup = () => {
           sx={{ color: "white" }}
           label="Email ID"
           type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
           iconStart={<EmailIcon sx={{ color: "#fa2185" }} />}
         />
         <IconTextField
           label="Password"
-          type={values.showPassword ? "text" : "password"}
+          type="password"
           placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          iconStart={<Key sx={{ color: "#fa2185" }} />}
+        />
+        <IconTextField
+          label="Confirm Password"
+          type={values.showPassword ? "text" : "password"}
+          placeholder="Confirm Password"
           onChange={handleChange("password")}
           iconStart={<Key sx={{ color: "#fa2185" }} />}
           iconEnd={
@@ -118,16 +164,11 @@ const Signup = () => {
           }
         />
         <IconTextField
-          label="Confirm Password"
-          type={values.showPassword ? "text" : "password"}
-          placeholder="Confirm Password"
-          onChange={handleChange("password")}
-          iconStart={<Key sx={{ color: "#fa2185" }} />}
-        />
-        <IconTextField
           sx={{ color: "white" }}
           label="Phone Number"
           type="text"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
           placeholder="Phone Number"
           iconStart={<PhoneIphoneIcon sx={{ color: "#fa2185" }} />}
         />
@@ -135,12 +176,16 @@ const Signup = () => {
           sx={{ color: "white" }}
           label="College"
           type="text"
+          value={college}
+          onChange={(e) => setCollege(e.target.value)}
           placeholder="College Name"
           iconStart={<SchoolIcon sx={{ color: "#fa2185" }} />}
         />
 
         <div className="panel pink">
-          <button className="btn2">Signup</button>
+          <button className="btn2" type="submit">
+            Signup
+          </button>
         </div>
         <div className="panel borderless">
           <Link to="/login">

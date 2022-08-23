@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
 //For Form
@@ -43,9 +43,8 @@ const Login = () => {
     showPassword: false,
   });
 
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleClickShowPassword = () => {
     setValues({
@@ -57,8 +56,34 @@ const Login = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+  //Connecting to backend
+  async function loginUser(event) {
+    event.preventDefault();
+
+    const response = await fetch("http://localhost:1337/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+    const data = await response.json();
+    console.log(data);
+
+    if (data.user) {
+      alert("Login successful");
+      window.location.href = "/topic";
+    } else {
+      alert("Check your email id and password!");
+    }
+  }
+
   return (
-    <form className="form">
+    <form className="form" onSubmit={loginUser}>
       <Box
         className="container"
         sx={{
@@ -71,7 +96,7 @@ const Login = () => {
           gap: 2,
         }}
       >
-        <Typography variant="h3" >
+        <Typography variant="h3">
           <b>Welcome!</b>
         </Typography>
         <Typography variant="h5" style={{ marginBottom: 20 }}>
@@ -85,14 +110,18 @@ const Login = () => {
           placeholder="Enter your email."
           iconStart={<AccountCircle sx={{ color: "#fa2185" }} />}
           autoComplete="off"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
         <IconTextField
           label="Password"
           type={values.showPassword ? "text" : "password"}
           placeholder="Enter your password."
-          onChange={handleChange("password")}
+          // onChange={handleChange("password")}
           iconStart={<Key sx={{ color: "#fa2185" }} />}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           iconEnd={
             <IconButton
               aria-label="toggle password visibility"
@@ -107,12 +136,17 @@ const Login = () => {
             </IconButton>
           }
         />
-        <Typography variant="body2" style={{ color: "#fb9701", fontWeight: "bold"}}>
+        <Typography
+          variant="body2"
+          style={{ color: "#fb9701", fontWeight: "bold" }}
+        >
           Forgot Password?
         </Typography>
 
         <div className="panel pink">
-          <button className="btn2">Login</button>
+          <button className="btn2" type="submit" value="Login">
+            Login
+          </button>
         </div>
         <div className="panel borderless">
           <Link to="/signup">
